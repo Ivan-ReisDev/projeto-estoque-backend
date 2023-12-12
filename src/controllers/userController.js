@@ -72,6 +72,29 @@ const serviceControllerUser = {
             token:GenerateToken(checkUser._id)
         })
 
+    },
+    getAll: async(req, res) => {
+        try {
+            const users = await User.find();
+            res.json(users)
+        } catch (error) {
+
+            console.log('Usuário não encontrado')
+            console.error('Usuário não encontrado', error);
+            res.status(500).json({msg: 'Usuário não encontrado'})
+        }
+
+    },
+
+    getcurrentUser: async(req, res) => {
+        try {
+            const user = req.User;
+            res.status(200).json(user);
+
+        } catch (error) {
+            console.log('Perfil não encontrado')
+        }
+
     }
 
 
