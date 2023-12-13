@@ -14,7 +14,6 @@ const serviceControllerProducts = {
                 return res.status(422).json({error:'Preencha todos os campos'})
             }
 
-
             const newProduct = { 
                 idUser:idUser,
                 nameProducts:nameProducts,
