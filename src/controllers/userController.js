@@ -3,13 +3,12 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 
 // Função para gerar um token JWT com base no ID do usuário
+
 const GenerateToken = (id) => {
     return jwt.sign({ id }, 'KS1486735ANFSAN36454BFGSAF45471PKPEKGPSAGK1454EDGG', {
         expiresIn: "7d"
     });
 };
-
-
 
 const serviceControllerUser = {
     register: async(req, res) => {
@@ -88,7 +87,7 @@ const serviceControllerUser = {
 
     getcurrentUser: async(req, res) => {
         try {
-            const user = req.User;
+            const user = req.user;
             res.status(200).json(user);
 
         } catch (error) {
