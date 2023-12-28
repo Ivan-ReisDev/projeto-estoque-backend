@@ -9,7 +9,7 @@ const serviceControllerProducts = {
             const { nameProducts, description, category, link, codeSKU, mark, stock, price, localization } = formData;
 
 
-            if (!category || !price || !stock || !nameProducts) {
+            if (!category || !price || !nameProducts) {
                 return res.status(422).json({ error: 'Preencha todos os campos' })
             }
 
