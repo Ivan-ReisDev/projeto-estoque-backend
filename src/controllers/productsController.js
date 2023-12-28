@@ -8,11 +8,7 @@ const serviceControllerProducts = {
 
             const { nameProducts, description, category, link, codeSKU, mark, stock, price, localization } = formData;
 
-            const nameProduct = await Products.findOne({ nameProducts })
 
-            if (nameProduct) {
-                return res.status(422).json({ error: 'Produto já cadastrado' })
-            }
             if (!category || !price || !stock || !nameProducts) {
                 return res.status(422).json({ error: 'Preencha todos os campos' })
             }
