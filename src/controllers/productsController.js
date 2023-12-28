@@ -48,7 +48,7 @@ const serviceControllerProducts = {
 
     getAllProducts: async (req, res) => {
         try {
-            const products = await Products.find();
+            const products = await Products.find().sort();
             res.json(products)
         } catch (error) {
             console.error('Produto não encontrado', error);
