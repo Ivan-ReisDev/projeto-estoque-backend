@@ -20,15 +20,15 @@ const serviceControllerProducts = {
             const newProduct = {
                 idUser: idUser,
                 nameUser: nameUser,
-                nameProducts: nameProducts.toUpperCase(),
-                description: description.toUpperCase(),
-                category: category.toUpperCase(),
+                nameProducts: nameProducts.toLowerCase(),
+                description: description.toLowerCase() ,
+                category: category.toLowerCase() ,
                 link: link,
-                codeSKU: codeSKU.toUpperCase(),
-                mark: mark.toUpperCase(),
+                codeSKU: codeSKU.toLowerCase() ,
+                mark: mark.toLowerCase() ,
                 stock: stock,
                 price: price,
-                localization: localization.toUpperCase(),
+                localization: localization.toLowerCase() ,
             }
 
             const createProducts = await Products.create(newProduct)
