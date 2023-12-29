@@ -13,7 +13,7 @@ const GenerateToken = (id) => {
 const serviceControllerUser = {
     register: async(req, res) => {
         try {
-            const { user, email, password, passwordConf } = req.body;
+            const { user, email, password, passwordConf, userType } = req.body;
             const userName = await User.findOne({user})
             const emailExists = await User.findOne({email})
             if(userName ) {
@@ -32,7 +32,8 @@ const serviceControllerUser = {
             const newUser = { 
                 user:user,
                 email: email,
-                password:passwordHash
+                password:passwordHash,
+                userType: userType
             }
 
             const createUser = await User.create(newUser)
