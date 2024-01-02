@@ -128,7 +128,7 @@ const serviceControllerUser = {
 
     },
 
-    deleteUser: async (req, res) => {
+    deleteUsers: async (req, res) => {
         try {
             const userId = req.params.userId;
             const deleteUser = await Products.findByIdAndDelete(userId)
