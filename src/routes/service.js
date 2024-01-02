@@ -7,14 +7,11 @@ const serviceControllerUser = require('../controllers/userController.js')
 const serviceControllerProducts = require('../controllers/productsController.js')
 
 router.route('/register').post((req, res) => serviceControllerUser.register(req, res))
-
 router.route('/login').post((req, res) => serviceControllerUser.login(req, res))
-
 router.route('/all/users').get((req, res) => serviceControllerUser.getAll(req, res))
-
 router.route('/profile').get(authGuard, getcurrentUser, (req, res) => serviceControllerUser.getAll(req, res))
 router.route('/users/update/:userId').put((req, res) => serviceControllerUser.updateUser(req, res))
-
+router.route('/remove/delete/user/:userId').delete((req, res) => serviceControllerUser.deleteUser(req, res))
 
 
 //Podutos 

@@ -128,6 +128,24 @@ const serviceControllerUser = {
 
     },
 
+    deleteUser: async (req, res) => {
+        try {
+            const userId = req.params.userId;
+            const deleteUser = await Products.findByIdAndDelete(userId)
+            if (!deleteUser) {
+                res.status(404).json({ msg: 'Usuário não encontrado' });
+
+            }
+
+            res.status(200).json({ msg: 'Usuário deletedo com sucesso' });
+
+        } catch (error) {
+            console.error('Não foi possível deletar o usuário', error);
+            res.status(500).json({ msg: 'Não foi possível deletar o usuário' })
+        }
+
+    },
+
 
 }
 
