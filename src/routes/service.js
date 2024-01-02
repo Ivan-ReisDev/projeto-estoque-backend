@@ -13,7 +13,7 @@ router.route('/login').post((req, res) => serviceControllerUser.login(req, res))
 router.route('/all/users').get((req, res) => serviceControllerUser.getAll(req, res))
 
 router.route('/profile').get(authGuard, getcurrentUser, (req, res) => serviceControllerUser.getAll(req, res))
-router.route('/users/update/:userId').put((req, res) => serviceControllerProducts.updateProducts(req, res))
+router.route('/users/update/:userId').put((req, res) => serviceControllerUser.updateUser(req, res))
 
 
 
