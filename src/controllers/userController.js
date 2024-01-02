@@ -95,7 +95,38 @@ const serviceControllerUser = {
             console.log('Perfil não encontrado')
         }
 
-    }
+    },
+
+    updateUser: async (req, res) => {
+        try {
+            const userId = req.params.userId;
+            const { user, email, password, userType } = req.body;
+            const updateUser = await User.findById(userId)
+            if (!updateUser) {
+                res.status(404).json({ msg: 'Usuário não encontrado.' });
+
+            }
+
+            const saltHash = await bcrypt.genSalt(10);
+            const passwordHash = await bcrypt.hash(password, saltHash);
+
+
+            updateUser.user = user.toLowerCase();
+            updateUser.email = email.toLowerCase() ;
+            updateUser.password = passwordHash;
+            updateUser.userType = userType;
+           
+
+            await updateUser.save()
+
+            res.status(200).json({ msg: 'Usuário atualizado com sucesso' });
+
+        } catch (error) {
+            console.error('Não foi possível atualizar o usuário.', error);
+            res.status(500).json({ msg: 'Não foi possível atualizar o usuário.' })
+        }
+
+    },
 
 
 }
