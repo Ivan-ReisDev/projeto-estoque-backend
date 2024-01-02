@@ -131,7 +131,7 @@ const serviceControllerUser = {
     deleteUsers: async (req, res) => {
         try {
             const userId = req.params.userId;
-            const deleteUser = await Products.findByIdAndDelete(userId)
+            const deleteUser = await User.findByIdAndDelete(userId)
             if (!deleteUser) {
                 res.status(404).json({ msg: 'Usuário não encontrado' });
 
