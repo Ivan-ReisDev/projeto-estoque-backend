@@ -9,7 +9,7 @@ const serviceControllerCategory = {
             const { category } = formData;
 
             const newCategory = {
-                category: category
+                category: category,
             }
 
             const createNewCategory = await Category.create(newCategory)
@@ -26,7 +26,7 @@ const serviceControllerCategory = {
 
         } catch (error) {
             console.error('Erro ao registrar', error);
-            res.status(500).json({ msg: 'Erro ao cadastrar categoria.' })
+            res.status(500).json({ msg: 'Erro ao cadastrar categoriaaaa.' })
         }
     },
 
