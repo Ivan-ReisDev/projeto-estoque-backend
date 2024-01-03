@@ -28,7 +28,7 @@ const serviceControllerCategory = {
             console.error('Erro ao registrar', error);
             res.status(500).json({ msg: 'Erro ao cadastrar categoriaaaa.' })
         }
-    },
+    }
 
 
 }
