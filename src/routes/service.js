@@ -25,6 +25,9 @@ router.route('/update/products/:productsId').put((req, res) => serviceController
 
 // Categorias 
 router.route('/create/category').post((req, res) => serviceControllerCategory.createCategory(req, res))
+router.route('/get/category').get((req, res) => serviceControllerCategory.getAllCategory(req, res))
+router.route('/put/category/:categoryId').put((req, res) => serviceControllerCategory.updateCategory(req, res))
+router.route('/delete/category/:categoryId').delete((req, res) => serviceControllerCategory.deleteCategory(req, res))
 
 
 module.exports = router
