@@ -104,15 +104,15 @@ const serviceControllerProducts = {
                 res.status(404).json({ msg: 'Produto não encontrado' });
 
             }
-            updateProducts.nameProducts = nameProducts.toUpperCase();
-            updateProducts.description = description.toUpperCase();
-            updateProducts.category = category.toUpperCase();
+            updateProducts.nameProducts = nameProducts.toLowerCase();
+            updateProducts.description = description.toLowerCase();
+            updateProducts.category = category.toLowerCase();
             updateProducts.link = link;
-            updateProducts.codeSKU = codeSKU.toUpperCase();
-            updateProducts.mark = mark.toUpperCase();
+            updateProducts.codeSKU = codeSKU.toLowerCase();
+            updateProducts.mark = mark.toLowerCase();
             updateProducts.stock = stock;
             updateProducts.price = price;
-            updateProducts.localization = localization.toUpperCase();
+            updateProducts.localization = localization.toLowerCase();
 
             await updateProducts.save()
 
