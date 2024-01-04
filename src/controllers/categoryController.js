@@ -49,7 +49,7 @@ const serviceControllerCategory = {
 
             await updateCategory.save()
 
-            res.status(200).json({ msg: 'Categoria atualizada com sucessor.' });
+            res.status(200).json({ msg: 'Categoria atualizada com sucesso.' });
 
         } catch (error) {
             console.error('Não foi possível atualizar a categoria', error);
@@ -63,15 +63,15 @@ const serviceControllerCategory = {
             const categoryId = req.params.categoryId;
             const deleteCategory = await Category.findByIdAndDelete(categoryId)
             if (!deleteCategory) {
-                res.status(404).json({ msg: 'Produto não encontrado' });
+                res.status(404).json({ msg: 'Categoria não encontrada' });
 
             }
 
-            res.status(200).json({ msg: 'Produto deletado com sucesso.' });
+            res.status(200).json({ msg: 'Categoria deletada com sucesso.' });
 
         } catch (error) {
-            console.error('Não foi possível deletar o produto', error);
-            res.status(500).json({ msg: 'Não foi possível deletar o produto' })
+            console.error('Não foi possível deletar a categoria', error);
+            res.status(500).json({ msg: 'Não foi possível deletar categoria' })
         }
 
     },

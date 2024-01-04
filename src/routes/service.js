@@ -6,6 +6,7 @@ const { getcurrentUser } = require('../controllers/userController');
 const serviceControllerUser = require('../controllers/userController.js')
 const serviceControllerProducts = require('../controllers/productsController.js')
 const serviceControllerCategory = require('../controllers/categoryController.js')
+const serviceControllerSales = require('../controllers/saleController.js')
 
 router.route('/register').post((req, res) => serviceControllerUser.register(req, res))
 router.route('/login').post((req, res) => serviceControllerUser.login(req, res))
@@ -25,9 +26,15 @@ router.route('/update/products/:productsId').put((req, res) => serviceController
 
 // Categorias 
 router.route('/create/category').post((req, res) => serviceControllerCategory.createCategory(req, res))
-router.route('/get/category').get((req, res) => serviceControllerCategory.getAllCategory(req, res))
+router.route('/get/category').get(authGuard, getcurrentUser,(req, res) => serviceControllerCategory.getAllCategory(req, res))
 router.route('/put/category/:categoryId').put((req, res) => serviceControllerCategory.updateCategory(req, res))
 router.route('/delete/category/:categoryId').delete((req, res) => serviceControllerCategory.deleteCategory(req, res))
 
+
+// vendas 
+// router.route('/register/sale').post((req, res) => serviceControllerSales.createCategory(req, res))
+// router.route('/get/sale').get((req, res) => serviceControllerSales.getAllCategory(req, res))
+// router.route('/put/sale/:saleId').put((req, res) => serviceControllerSales.updateCategory(req, res))
+// router.route('/delete/sale/:saleId').delete((req, res) => serviceControllerSales.deleteCategory(req, res))
 
 module.exports = router
