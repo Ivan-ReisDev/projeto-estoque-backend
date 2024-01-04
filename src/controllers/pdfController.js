@@ -17,7 +17,7 @@ const serviceControllerPdf = {
             doc.text(description, 110, 140)
 
             doc.end()
-
+            res.download(__dirname + 'teste.pdf')
             res.status(201).json({ msg: 'Categoria cadastrada com sucesso.' })
 
         } catch (error) {
