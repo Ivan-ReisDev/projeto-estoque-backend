@@ -18,7 +18,7 @@ const serviceControllerPdf = {
 
             doc.end()
             res.download(__dirname + 'teste.pdf')
-            res.status(201).json({ msg: 'Categoria cadastrada com sucesso.' })
+
 
         } catch (error) {
             console.error('Erro ao registrar', error);
