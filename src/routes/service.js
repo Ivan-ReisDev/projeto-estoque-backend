@@ -20,7 +20,7 @@ router.route('/user/delete/:userId').delete((req, res) => serviceControllerUser.
 //Podutos 
 
 router.route('/create/products').post(authGuard, getcurrentUser, (req, res) => serviceControllerProducts.registerProducts(req, res))
-router.route('/get/products').get(authGuard, getcurrentUser, (req, res) => serviceControllerProducts.getAllProducts(req, res))
+router.route('/get/products').get((req, res) => serviceControllerProducts.getAllProducts(req, res))
 router.route('/remove/products/:productsId').delete(authGuard, getcurrentUser,(req, res) => serviceControllerProducts.removeProduct(req, res))
 router.route('/update/products/:productsId').put(authGuard, getcurrentUser,(req, res) => serviceControllerProducts.updateProducts(req, res))
 
