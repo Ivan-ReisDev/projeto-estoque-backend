@@ -2,33 +2,34 @@ const { Products } = require('../Models/products')
 
 
 const serviceControllerProducts = {
+
     registerProducts: async (req, res) => {
         try {
             const { nameUser, idUser, formData } = req.body;
 
             const { nameProducts, description, category, link, codeSKU, mark, stock, price, localization } = formData;
 
-            // const nameProduct = await Products.findOne({ nameProducts })
+            const nameProduct = await Products.findOne({ nameProducts })
 
-            // if (nameProduct) {
-            //     return res.status(422).json({ error: 'Produto já cadastrado' })
-            // }
-            // if (!category || !price || !stock || !nameProducts) {
-            //     return res.status(422).json({ error: 'Preencha todos os campos' })
-            // }
+            if (nameProduct) {
+                return res.status(422).json({ error: 'Produto já cadastrado' })
+            }
+            if (!category || !price || !stock || !nameProducts) {
+                return res.status(422).json({ error: 'Preencha todos os campos' })
+            }
 
             const newProduct = {
                 idUser: idUser,
                 nameUser: nameUser,
-                nameProducts: nameProducts.toLowerCase(),
-                description: description.toLowerCase() ,
-                category: category.toLowerCase() ,
+                nameProducts: nameProducts,
+                description: description,
+                category: category,
                 link: link,
-                codeSKU: codeSKU.toLowerCase() ,
-                mark: mark.toLowerCase() ,
+                codeSKU: codeSKU,
+                mark: mark,
                 stock: stock,
                 price: price,
-                localization: localization.toLowerCase() ,
+                localization: localization,
             }
 
             const createProducts = await Products.create(newProduct)
@@ -47,8 +48,8 @@ const serviceControllerProducts = {
 
 
     getAllProducts: async (req, res) => {
-        try { 
-            const products = await Products.find().sort({nameProducts:1});
+        try {
+            const products = await Products.find().sort({ nameProducts: 1 });
             res.json(products)
 
         } catch (error) {
