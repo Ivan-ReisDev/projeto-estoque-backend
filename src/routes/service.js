@@ -18,7 +18,6 @@ router.route('/user/delete/:userId').delete((req, res) => serviceControllerUser.
 
 
 //Podutos 
-
 router.route('/create/products').post((req, res) => serviceControllerProducts.registerProducts(req, res))
 router.route('/get/products').get((req, res) => serviceControllerProducts.getAllProducts(req, res))
 router.route('/remove/products/:productsId').delete((req, res) => serviceControllerProducts.removeProduct(req, res))
@@ -37,6 +36,7 @@ router.route('/delete/category/:categoryId').delete((req, res) => serviceControl
 // router.route('/get/sale').get((req, res) => serviceControllerSales.getAllCategory(req, res))
 // router.route('/put/sale/:saleId').put((req, res) => serviceControllerSales.updateCategory(req, res))
 // router.route('/delete/sale/:saleId').delete((req, res) => serviceControllerSales.deleteCategory(req, res))
-router.route('/create/pdf').get((req, res) => serviceControllerPdf.createPdf(req, res))
+
+router.route('/create/pdf').post((req, res) => serviceControllerPdf.createPdf(req, res))
 
 module.exports = router

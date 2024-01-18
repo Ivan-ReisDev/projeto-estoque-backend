@@ -2,6 +2,7 @@ const { Sale } = require('../Models/sale')
 
 
 const serviceControllerSales = {
+    
     registerCategory: async (req, res) => {
         try {
             const { sale } = req.body;
