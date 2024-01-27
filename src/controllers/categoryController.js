@@ -4,25 +4,27 @@ const { Category } = require('../Models/category')
 const serviceControllerCategory = {
     createCategory: async (req, res) => {
         try {
-            const { category } = req.body;
+            const { formdata } = req.body;
+            const { category } = formdata;
 
             const newCategory = {
                 category: category,
-            }
-
-            const createNewCategory = await Category.create(newCategory)
-
+            };
+    
+            const createNewCategory = await Category.create(newCategory);
+    
             if (!createNewCategory) {
-                return res.status(422).json({ error: 'Erro ao criar categoria tente novamente mais tarde.' })
+                return res.status(422).json({ error: 'Erro ao criar categoria. Tente novamente mais tarde.' });
             }
-
-            res.status(201).json({ msg: 'Categoria cadastrada com sucesso.' })
-
+    
+            res.status(201).json({ msg: 'Categoria cadastrada com sucesso.' });
+    
         } catch (error) {
             console.error('Erro ao registrar', error);
-            res.status(500).json({ msg: 'Erro ao cadastrar categoria.' })
+            res.status(500).json({ msg: 'Erro ao cadastrar categoria.' });
         }
     },
+    
 
     getAllCategory: async (req, res) => {
         try { 
