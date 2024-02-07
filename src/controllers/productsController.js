@@ -1,4 +1,5 @@
 const { Products } = require('../Models/products')
+const { Category } = require('../Models/category')
 
 
 const serviceControllerProducts = {
@@ -9,7 +10,11 @@ const serviceControllerProducts = {
 
             const { nameProducts, description, category, link, codeSKU, mark, stock, price, localization } = formData;
 
-            const nameProduct = await Products.findOne({ nameProducts })
+            const nameProduct = await Products.findOne({ nameProducts });
+
+            if(!category) {
+                return res.status(422).json({ msg: 'Categoria inexistente.' })
+            }
 
             if (nameProduct) {
                 return res.status(422).json({ error: 'Produto já cadastrado' })
@@ -49,6 +54,7 @@ const serviceControllerProducts = {
 
     getAllProducts: async (req, res) => {
         try {
+            
             const products = await Products.find().sort({ nameProducts: 1 });
             res.json(products)
 
@@ -59,9 +65,25 @@ const serviceControllerProducts = {
 
     },
 
+    searchProducts: async (req, res) => {
+        try {
+            const  nameProducts  = req.query.nameProducts;
+            console.log(nameProducts)
+            const products = await Products.find().sort({ nameProducts: 1 });
+            const resProduct = nameProducts
+                ? products.filter(product => product.nameProducts.includes(nameProducts)) 
+                : products;
+            return res.json(resProduct);
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json({ error: 'Erro interno do servidor' });
+        }
+    },
+
     removeProduct: async (req, res) => {
         try {
             const productsId = req.params.productsId;
+            console.log(req.params)
             const deleteProducts = await Products.findByIdAndDelete(productsId)
             if (!deleteProducts) {
                 res.status(404).json({ msg: 'Produto não encontrado' });
