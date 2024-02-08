@@ -25,16 +25,16 @@ const serviceControllerProducts = {
 
             const newProduct = {
                 idUser: idUser,
-                nameUser: nameUser,
-                nameProducts: nameProducts,
-                description: description,
-                category: category,
-                link: link,
+                nameUser: nameUser.toLowerCase(),
+                nameProducts: nameProducts.toLowerCase(),
+                description: description.toLowerCase(),
+                category: category.toLowerCase(),
+                link: link.toLowerCase(),
                 codeSKU: codeSKU,
-                mark: mark,
+                mark: mark.toLowerCase(),
                 stock: stock,
                 price: price,
-                localization: localization,
+                localization: localization.toLowerCase(),
             }
 
             const createProducts = await Products.create(newProduct)
