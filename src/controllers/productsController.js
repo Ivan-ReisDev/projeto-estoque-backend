@@ -70,7 +70,7 @@ const serviceControllerProducts = {
             const  nameProducts  = req.query.nameProducts;
             console.log(nameProducts)
             const products = await Products.find().sort({ nameProducts: 1 });
-            const resProduct = nameProducts
+            const resProduct = nameProducts.toLowerCase()
                 ? products.filter(product => product.nameProducts.includes(nameProducts)) 
                 : products;
             return res.json(resProduct);
