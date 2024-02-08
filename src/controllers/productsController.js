@@ -71,7 +71,7 @@ const serviceControllerProducts = {
             console.log(nameProducts)
             const products = await Products.find().sort({ nameProducts: 1 });
             const resProduct = nameProducts.toLowerCase()
-                ? products.filter(product => product.nameProducts.includes(nameProducts)) 
+                ? products.filter(product => product.nameProducts.includes(nameProducts.toLowerCase())) 
                 : products;
             return res.json(resProduct);
         } catch (error) {
